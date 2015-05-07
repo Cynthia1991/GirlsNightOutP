@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>details</key>
+		<string>You have done and which you never ever want to be caught doing again?</string>
+		<key>icons</key>
+		<string>T1.png</string>
+		<key>header</key>
+		<string>What is the one thing</string>
+	</dict>
+	<dict>
+		<key>icons</key>
+		<string>T2.png</string>
+		<key>details</key>
+		<string>And with Who was your first kiss?</string>
+		<key>header</key>
+		<string>How, When, Where</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>What turns you on physically &amp; whats your biggest turn off?</string>
+		<key>icons</key>
+		<string>T3.png</string>
+		<key>header</key>
+		<string>Turn off &amp; On</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>You have done in your life.</string>
+		<key>icons</key>
+		<string>T4.png</string>
+		<key>header</key>
+		<string>Meanest Thing</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>Anyone from the crowd gathered in this room / place, Who would it be?</string>
+		<key>icons</key>
+		<string>T5.png</string>
+		<key>header</key>
+		<string>If you could date</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>The opposite sex for one day, what would you look like and what would you do?</string>
+		<key>icons</key>
+		<string>T6.png</string>
+		<key>header</key>
+		<string>If you were</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>With the worst birthday gift so far and what was it?</string>
+		<key>icons</key>
+		<string>T7.png</string>
+		<key>header</key>
+		<string>Who has presented you</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>of yours are you self-conscious about?</string>
+		<key>icons</key>
+		<string>T8.png</string>
+		<key>header</key>
+		<string>What feature</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>What do you think is your sexiest attribute?</string>
+		<key>icons</key>
+		<string>T9.png</string>
+		<key>header</key>
+		<string>-</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>would be the worst to be trapped in an elevator with?</string>
+		<key>icons</key>
+		<string>T10.png</string>
+		<key>header</key>
+		<string>Who in this room</string>
+	</dict>
+</array>
+</plist>

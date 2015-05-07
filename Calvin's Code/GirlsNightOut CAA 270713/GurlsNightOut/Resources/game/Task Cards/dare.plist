@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icons</key>
+		<string>D4.png</string>
+		<key>details</key>
+		<string>To a random opposite sex in a foreign language</string>
+		<key>header</key>
+		<string>Attempt to Talk</string>
+	</dict>
+	<dict>
+		<key>icons</key>
+		<string>D1.png</string>
+		<key>details</key>
+		<string>And be adamant that you know each other well</string>
+		<key>header</key>
+		<string>Approach a Stranger</string>
+	</dict>
+	<dict>
+		<key>icons</key>
+		<string>D2.png</string>
+		<key>details</key>
+		<string>A specified body part or item of clothing</string>
+		<key>header</key>
+		<string>Have a man autograph</string>
+	</dict>
+	<dict>
+		<key>icons</key>
+		<string>D3.png</string>
+		<key>details</key>
+		<string>To the next person who enters the room / place</string>
+		<key>header</key>
+		<string>Throw A Kiss</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>Keep Calm &amp; Gangnam ( for at least 30 seconds)</string>
+		<key>icons</key>
+		<string>D5.png</string>
+		<key>header</key>
+		<string>-</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>at the end of every sentence you said (till the game ends)</string>
+		<key>icons</key>
+		<string>D7.png</string>
+		<key>header</key>
+		<string>Add &quot;In bed&quot;</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>of the same or opposite sex in the group</string>
+		<key>icons</key>
+		<string>D8.png</string>
+		<key>header</key>
+		<string>Kiss a member</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>Do an Impression of someone in the group</string>
+		<key>icons</key>
+		<string>D6.png</string>
+		<key>header</key>
+		<string>-</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>Moonwalk across the room</string>
+		<key>icons</key>
+		<string>D9.png</string>
+		<key>header</key>
+		<string>-</string>
+	</dict>
+	<dict>
+		<key>details</key>
+		<string>In a funny voice</string>
+		<key>icons</key>
+		<string>D10.png</string>
+		<key>header</key>
+		<string>Chat someone up </string>
+	</dict>
+</array>
+</plist>
