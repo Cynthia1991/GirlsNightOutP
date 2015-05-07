@@ -324,7 +324,8 @@
 //    drinkingView.postID=[[theResults objectAtIndex:0] objectForKey:@"eventPostDBID"];
     drinkingView.drinkID=[dic objectForKey:@"drinksID"];
 //    drinkingView.drink=[[aDelegate addDrinkManager] selectADrinkID:[dic objectForKey:@"drinksID"]];
-    drinkingView.drink.addedDateValue=[NSString stringWithFormat:@"%@",now];
+    //drinkingView.drink.addedDateValue=[NSString stringWithFormat:@"%@",now];
+    drinkingView.drink.addedDateValue=now;
     [[[[aDelegate addDrinkManager] addedDrinkDic] objectForKey:[NSString stringWithFormat:@"%d",[self eventDBID]]] addObject:drinkingView];
     [self.view addSubview:drinkingView];
     

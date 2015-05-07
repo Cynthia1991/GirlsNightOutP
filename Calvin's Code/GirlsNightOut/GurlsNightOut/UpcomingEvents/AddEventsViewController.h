@@ -28,6 +28,8 @@
     
     NSInteger actionSheetFunction;
     UIActionSheet *actionSheetDate;
+    
+    UIAlertController *alertControllerDate;
 
     UIDatePicker *pickerViewDate;
     NSDate *eventDate;

@@ -12,7 +12,9 @@
 #import "TimelineScrollViewController.h"
 #import "FriendsListTableCell.h"
 
+
 @interface AddEventsViewController ()
+
 
 @end
 
@@ -35,6 +37,8 @@
 @synthesize ivBackground;
 @synthesize _tableView;
 @synthesize eventListController,friendsArray,locationName,locationAddress,locationLatitude,locationLongitude,eventIconDBID,currentLocation,function,eventName,eventDate,eventDBID,eventDetails,HUD,friendsArrayInEventDetails,addFriendsInEventDetailsFunction,isActivity;
+
+NSString *selectDateText;
 
 #pragma mark - View life cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -165,7 +169,12 @@
     
     actionSheetDate = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
 	[actionSheetDate setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    pickerViewDate=[[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 320, 0)];
+    
+    alertControllerDate = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertControllerDate.view setBounds:CGRectMake(0, 0, 320, 400)];
+    
+    
+    pickerViewDate=[[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
     
     currentLocation = [[CLLocationManager alloc] init];//创建位置管理器
     currentLocation.desiredAccuracy=kCLLocationAccuracyBest;//指定需要的精度级别
@@ -421,7 +430,7 @@
     }
     else if (function==0||function==1) {
         if ([indexPath section]==0) {
-            if ([indexPath row]==0||[indexPath row]==2) {
+            if ([indexPath row]==0||[indexPath row]==2||[indexPath row] == 3) {
                 AddFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 cell.lbTitle.text=[titleArray objectAtIndex:[indexPath row]];
                 cell.lbTitle.font=[UIFont boldSystemFontOfSize:17];
@@ -437,6 +446,7 @@
                         cell.tfContent.text=[NSString stringWithFormat:@"Touch to edit"];
                         cell.tfContent.textColor=[UIColor grayColor];
                         cell.tfContent.font=[UIFont systemFontOfSize:17];
+                        NSLog(@"!!%@",indexPath);
                     }
                 }
                 else if([indexPath row]==2){
@@ -451,6 +461,24 @@
                         cell.tfContent.font=[UIFont systemFontOfSize:17];
                     }
                 }
+                /*else if([indexPath row]==1){
+                    if (eventDetails!=nil) {
+                        //cell.tfContent.text=eventTime;
+                        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                        [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                        NSString *theDate = [dateFormat stringFromDate:eventDate];
+                        cell.tfContent.text=theDate;
+                        cell.tfContent.textColor=[UIColor whiteColor];///////////////
+                        cell.tfContent.font=[UIFont systemFontOfSize:17];
+                    }
+                    else {
+                        cell.tfContent.text=[NSString stringWithFormat:@"Touch to edit"];
+                        cell.tfContent.textColor=[UIColor grayColor];
+                        cell.tfContent.font=[UIFont systemFontOfSize:17];
+                    }
+                
+                
+                }*/
                 
                 cell.tfContent.enabled=YES;
                 //////////////////////
@@ -461,12 +489,49 @@
                 [cell setBackgroundView:cellBgImageView];
                 [self setCellSelectedBackgroundImage:nil TableViewCell:cell];
 
+                
                 //////////////////////
                 return cell;
             }
             else if([indexPath row]==1)
             {
-                AddFunctionLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierLabel];
+                
+                AddFunctionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell.lbTitle.text=[titleArray objectAtIndex:[indexPath row]];
+                cell.lbTitle.font=[UIFont boldSystemFontOfSize:17];
+                cell.tfContent.tag=[indexPath section]+[indexPath row];
+                cell.tfContent.delegate=self;
+            
+                if (eventName!=nil) {
+                    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                    NSString *theDate = [dateFormat stringFromDate:eventDate];
+                    cell.tfContent.text=theDate;
+                    cell.tfContent.textColor=[UIColor whiteColor];////////////////////
+                    cell.tfContent.font=[UIFont systemFontOfSize:17];
+                }
+                else {
+                        cell.tfContent.text=[NSString stringWithFormat:@"Touch to edit"];
+                        cell.tfContent.textColor=[UIColor grayColor];
+                        cell.tfContent.font=[UIFont systemFontOfSize:17];
+                        NSLog(@"!!%@",indexPath);
+                }
+                cell.tfContent.enabled=YES;
+                //////////////////////
+                cell.backgroundColor=[UIColor clearColor];
+                cell.lbTitle.textColor=[UIColor whiteColor];
+                //                UIImageView *cellBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellBackground.png"]];
+                UIImageView *cellBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"abcd.png"]];
+                [cell setBackgroundView:cellBgImageView];
+                [self setCellSelectedBackgroundImage:nil TableViewCell:cell];
+                
+                
+                //////////////////////
+                return cell;
+
+
+                
+                /*AddFunctionLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierLabel];
                 if (cell==nil) {
                     cell=[[AddFunctionLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierLabel];
                 }
@@ -497,7 +562,7 @@
                 [self setCellSelectedBackgroundImage:nil TableViewCell:cell];
 
                 /////////////////////////////////////
-                return cell;
+                return cell;*/
             }
             
         }
@@ -783,10 +848,10 @@
 {
     if (function==1|| function==0) {
         if ([indexPath section]==0) {
-            if ([indexPath row]==1) {
+            /*if ([indexPath row]==1) {
                 actionSheetFunction=0;
-                [self popPicker];
-            }
+                //[self popPicker];
+            }*/
         }
         else if ([indexPath section]==1) {
             if ([friendsArray count]!=0) {
@@ -1299,15 +1364,31 @@
     [lbTitle setTextAlignment:UITextAlignmentCenter];
     
     if (actionSheetFunction==0) {
-        [actionSheetDate addSubview:pickerViewDate];
-        [actionSheetDate addSubview:pickerDateToolbar];
+         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"This is a cancel messege from UIAlertAction~~~~~~");
+                                       }];
         
+        [pickerViewDate setBackgroundColor:[UIColor whiteColor]];
+        [alertControllerDate.view addSubview:pickerViewDate];
+        
+        //[alertControllerDate.view addSubview:pickerDateToolbar];
+        
+        
+        //[actionSheetDate addSubview:pickerViewDate];
+        //[actionSheetDate addSubview:pickerDateToolbar];
+        
+       
         
         lbTitle.text=[NSString stringWithFormat:@"Date"];
-        [actionSheetDate addSubview:lbTitle];
+        //[actionSheetDate addSubview:lbTitle];
+        [alertControllerDate.view addSubview:lbTitle];
+        [alertControllerDate addAction:cancelAction];
         
-        [actionSheetDate showInView:self.view];
-        [actionSheetDate setBounds:CGRectMake(0, 0, 320, 485)];
+        //[actionSheetDate showInView:self.view];
+        //[actionSheetDate setBounds:CGRectMake(0, 0, 320, 485)];
+        [alertControllerDate.view setBounds:CGRectMake(0, 0, 320, 485)];
+        [self presentViewController:alertControllerDate animated:YES completion:nil];
     }    
 
 }
@@ -1372,15 +1453,70 @@
         }
         textField.textColor=[UIColor whiteColor];
         
-        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-        [UIView setAnimationDuration:0.5f];  
+        
         
         self._tableView.frame=CGRectMake(0, 44, 320, [[UIScreen mainScreen] bounds].size.height-280);
         [UIView commitAnimations];
         
         indexTableView=[NSIndexPath indexPathForRow:2 inSection:0];
     }
+    else if(textField.tag == 1){
+        
+        if (eventDate!= nil) {
+            textField.text=[self eventDetails];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+            NSString *theDate = [dateFormat stringFromDate:eventDate];
+            textField.text=theDate;
+        }
+        else {
+            textField.text=[NSString stringWithFormat:@""];
+        }
+        textField.textColor=[UIColor whiteColor];
+        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+        [UIView setAnimationDuration:0.5f]; 
+        
+        textField.inputView = pickerViewDate;
+        
+        UIToolbar *pickerDateToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        
+        //pickerDateToolbar.barStyle = UIBarStyleBlackOpaque;
+        pickerDateToolbar.barStyle = UIBarStyleDefault;
+        UIBarButtonItem *pickerDateToolbarRight = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(cancelPicker)];
+        
+        
+        
+        pickerDateToolbar.items = [NSArray arrayWithObjects:pickerDateToolbarRight, nil];
+        textField.inputAccessoryView = pickerDateToolbar;
+        [pickerDateToolbar sizeToFit];
+        
+        self._tableView.frame=CGRectMake(0, 44, 320, [[UIScreen mainScreen] bounds].size.height-280);
+        [UIView commitAnimations];
+        
+        indexTableView=[NSIndexPath indexPathForRow:1 inSection:0];
+    
+
+    }
 }
+// 按下完成鈕後的 method
+-(void) cancelPicker{
+    // endEditing: 是結束編輯狀態的 method
+    
+    //NSString *text;
+    if ([self.view endEditing:NO]) {
+        NSLog(@"!!!cancelPicker");
+        // 以下幾行是測試用 可以依照自己的需求增減屬性
+        /*NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:nil];
+        [formatter setDateFormat:dateFormat];
+        //[formatter setLocale:datelocale];
+        // 將選取後的日期 填入 UITextField
+        //NSLog(@"~~~~~~~~~~~~~~%@",dateFormat);
+       
+        selectDateText = [NSString stringWithFormat:@"%@",[formatter stringFromDate:pickerViewDate.date]];*/
+    }
+}
+
 -(void) textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField.tag==0) {
@@ -1412,6 +1548,19 @@
         else {
             self.eventDetails=[textField text];
         }
+    }
+    else if (textField.tag ==1){
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yyyy-MM-dd" options:0 locale:nil];
+        [formatter setDateFormat:dateFormat];
+        
+        //[formatter setLocale:datelocale];
+        // 將選取後的日期 填入 UITextField
+        //NSLog(@"~~~~~~~~~~~~~~%@",dateFormat);
+        eventDate=[pickerViewDate date];
+        
+        textField.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:pickerViewDate.date]];
+    
     }
     self._tableView.frame=CGRectMake(0, 44, 320, [[UIScreen mainScreen] bounds].size.height-20-44);
 }
