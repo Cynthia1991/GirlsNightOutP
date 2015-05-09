@@ -60,10 +60,10 @@
     
     //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%.6f,%.6f&client_id=%@&client_secret=%@",currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude,kFourSquareClientID,kFourSquareClientSecret];
     
-    //if((currentLocation.location.coordinate.latitude!= 0)&&
-      // currentLocation.location.coordinate.longitude!=0){
-        //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
-        NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,27.4667,153.0333];
+    if((currentLocation.location.coordinate.latitude!= 0)&&
+       currentLocation.location.coordinate.longitude!=0){
+        NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
+        //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,27.4667,153.0333];
         NSURL *url=[NSURL URLWithString:urlStr];
     
         // Create the request.
@@ -81,10 +81,10 @@
             [self quickAlert:@"Connection failed." msgText:@"Connection failed."];
         }
         
-        /*}
+    }
     else{
             NSLog(@"No currentLocation!");
-    }*/
+    }
     
     
 
