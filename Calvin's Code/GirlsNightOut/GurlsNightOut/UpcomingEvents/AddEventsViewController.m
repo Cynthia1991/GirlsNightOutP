@@ -177,9 +177,12 @@ NSString *selectDateText;
     pickerViewDate=[[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
     
     currentLocation = [[CLLocationManager alloc] init];//创建位置管理器
+    currentLocation.delegate = self;
     currentLocation.desiredAccuracy=kCLLocationAccuracyBest;//指定需要的精度级别
     currentLocation.distanceFilter=100.0f;//设置距离筛选器
+    [currentLocation requestAlwaysAuthorization];
     [currentLocation startUpdatingLocation];//启动位置管理器
+    
     
     mySegumentedControll.tintColor = [UIColor purpleColor];
     
@@ -187,6 +190,30 @@ NSString *selectDateText;
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(initHeaderView:) name:@"initHeaderView" object:nil];
 
     [self.navigationItem setLeftBarButtonItem:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *currLocation = [locations lastObject];
+    NSLog(@"经度=%f 纬度=%f 高度=%f", currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if ([error code] == kCLErrorDenied)
+    {
+        //访问被拒绝
+    }
+    if ([error code] == kCLErrorLocationUnknown) {
+        //无法获取位置信息
+    }
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [currentLocation stopUpdatingLocation];
 }
 - (void) initHeaderView:(NSNotification*) notification
 {

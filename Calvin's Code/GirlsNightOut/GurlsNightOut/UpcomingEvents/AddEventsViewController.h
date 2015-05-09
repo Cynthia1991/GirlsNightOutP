@@ -17,7 +17,7 @@
 #import "BumpConnector.h"
 #import "MBProgressHUD.h"
 
-@interface AddEventsViewController : UIViewController<KumulosDelegate,UIActionSheetDelegate,UITextFieldDelegate,MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate>
+@interface AddEventsViewController : UIViewController<KumulosDelegate,UIActionSheetDelegate,UITextFieldDelegate,MKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,MBProgressHUDDelegate,CLLocationManagerDelegate>
 {
     NSMutableArray *titleArray;
     NSMutableArray *friendsArray;

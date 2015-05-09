@@ -16,6 +16,7 @@
 @implementation PlaceListViewController
 @synthesize currentLocation,searchBarDisplayController,addEventsViewController,function,eventDBID;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -25,16 +26,9 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self setTitle:[NSString stringWithFormat:@"Location"]];
-
-    data4TableView=[[NSMutableArray alloc] init];
-    data4SearchingTableView=[[NSMutableArray alloc] init];
-
-    
-    NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%.6f,%.6f&client_id=%@&client_secret=%@",currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude,kFourSquareClientID,kFourSquareClientSecret];
+-(void)GetAllVenuesCategories{
+    //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
+    NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/categories?client_id=%@&client_secret=%@&v=20130815",kFourSquareClientID,kFourSquareClientSecret];
     NSURL *url=[NSURL URLWithString:urlStr];
     
     // Create the request.
@@ -42,14 +36,57 @@
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:20.0];
     NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    funtionFSQ=0;
+    venuesCategoriesMark=1;
     [theConnection start];
     
     if (theConnection) {
         receivedData = [NSMutableData data];
     } else {
+        //        NSLog(@"Connection failed.");
         [self quickAlert:@"Connection failed." msgText:@"Connection failed."];
+        
     }
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setTitle:[NSString stringWithFormat:@"Location"]];
+
+    data4TableView=[[NSMutableArray alloc] init];
+    data4SearchingTableView=[[NSMutableArray alloc] init];
+    venuesCategoriesMark = 0;
+    
+    //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%.6f,%.6f&client_id=%@&client_secret=%@",currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude,kFourSquareClientID,kFourSquareClientSecret];
+    
+    //if((currentLocation.location.coordinate.latitude!= 0)&&
+      // currentLocation.location.coordinate.longitude!=0){
+        //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
+        NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,27.4667,153.0333];
+        NSURL *url=[NSURL URLWithString:urlStr];
+    
+        // Create the request.
+        NSURLRequest *theRequest=[NSURLRequest requestWithURL:url
+                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                          timeoutInterval:20.0];
+        NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+        funtionFSQ=0;
+    
+        [theConnection start];
+    
+        if (theConnection) {
+            receivedData = [NSMutableData data];
+        } else {
+            [self quickAlert:@"Connection failed." msgText:@"Connection failed."];
+        }
+        
+        /*}
+    else{
+            NSLog(@"No currentLocation!");
+    }*/
+    
+    
 
 }
 
@@ -83,10 +120,23 @@
     NSString *result = [[NSString alloc] initWithBytes: [receivedData mutableBytes] length:[receivedData length] encoding:NSUTF8StringEncoding];
     
     if (result!=nil) {     
-        NSMutableDictionary *dic=[result JSONValue];        
+        
+        if(venuesCategoriesMark == 1){
+            CategoriesDic=[result JSONValue];
+            if ([[[CategoriesDic objectForKey:@"meta"] objectForKey:@"code"] intValue]==200) {
+                
+                //[data4TableView addObjectsFromArray:[[CategoriesDic objectForKey:@"response"] objectForKey:@"venues"]];
+                
+            }
+            else {
+                [self quickAlert:@"Web server failed." msgText:@"Web server failed."];
+            }
+            
+        }
+        NSMutableDictionary *dic=[result JSONValue];
         if (funtionFSQ==0) {
             if ([[[dic objectForKey:@"meta"] objectForKey:@"code"] intValue]==200) {
-                [data4TableView addObjectsFromArray:[[[[dic objectForKey:@"response"] objectForKey:@"groups"] objectAtIndex:0] objectForKey:@"items"]];
+                [data4TableView addObjectsFromArray:[[dic objectForKey:@"response"] objectForKey:@"venues"]];
             }
             else {
                 [self quickAlert:@"Web server failed." msgText:@"Web server failed."];
@@ -95,10 +145,14 @@
         }
         else if (funtionFSQ==1) {
             if ([[[dic objectForKey:@"meta"] objectForKey:@"code"] intValue]==200) {
-                [data4SearchingTableView addObjectsFromArray:[[[[dic objectForKey:@"response"] objectForKey:@"groups"] objectAtIndex:0] objectForKey:@"items"]];
+                //[data4SearchingTableView addObjectsFromArray:[[[[dic objectForKey:@"response"] objectForKey:@"groups"] objectAtIndex:0] objectForKey:@"items"]];
+                
+                [data4TableView addObjectsFromArray:[[dic objectForKey:@"response"] objectForKey:@"venues"]];
+
             }
             else {
-                [self quickAlert:@"Web server failed." msgText:@"Web server failed."];
+                NSLog(@"No result found");
+                //[self quickAlert:@"Web server failed." msgText:@"Web server failed."];
             }
             [self.searchBarDisplayController.searchResultsTableView reloadData];
         }
@@ -283,6 +337,38 @@
 //    searching=NO;
 //}
 
+- (void) SearchPlaceByKeyWords:(NSString *)keyName{
+    if(CategoriesDic!=nil){
+        if ([[[CategoriesDic objectForKey:@"meta"] objectForKey:@"code"] intValue]==200) {
+            NSMutableDictionary *dic1=[[CategoriesDic objectForKey:@"response"] objectForKey:@"categories"];
+            for(int i = 0;i<[dic1 count];i++){
+                NSMutableDictionary *dic2 = [[[CategoriesDic objectForKey:@"response"] objectForKey:@"categories"] objectAtIndex: i] ;
+                //[[[[dic objectForKey:@"response"] objectForKey:@"groups"] objectAtIndex:0] objectForKey:@"items"]]
+                if([dic2 objectForKey: @"name"]== keyName){
+                    
+                }
+                else{
+                    for(int i = 0;i<[dic2 count];i++){
+                       NSMutableDictionary *dic3 = [[CategoriesDic objectForKey:@"categories"] objectAtIndex: i] ;
+                        if([dic3 objectForKey:@"name"] == keyName){
+                          
+                        }
+                        else{
+                        
+                        }
+                    }
+                }
+                
+            }
+        }
+        else {
+            [self quickAlert:@"Web server failed." msgText:@"Web server failed."];
+        }
+
+    }
+    
+}
+
 - (void)searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
     NSLog(@"searchBar2");
     [data4SearchingTableView removeAllObjects];
@@ -291,7 +377,9 @@
         NSString *query=[searchText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         NSLog(@"%@",query);
         
-        NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%.6f,%.6f&query=%@&client_id=%@&client_secret=%@",currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude,query,kFourSquareClientID,kFourSquareClientSecret];
+        
+        //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%.6f,%.6f&query=%@&client_id=%@&client_secret=%@",currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude,query,kFourSquareClientID,kFourSquareClientSecret];
+        NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
         NSURL *url=[NSURL URLWithString:urlStr];
         
         // Create the request.

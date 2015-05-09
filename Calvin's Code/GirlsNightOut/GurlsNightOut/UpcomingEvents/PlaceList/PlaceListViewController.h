@@ -11,8 +11,8 @@
 #import "SBJson.h"
 #import "AddEventsViewController.h"
 
-#define kFourSquareClientID	@"AL50DX5KCCDJC5ANYPEVNUP32SWX34D0RB4TW2ATG04VU4YP"
-#define kFourSquareClientSecret	@"F0RHNQTMXIR0YBXHY1EC4SNDEKKWA1TPL2C5TG1JTQHR2AWM"
+#define kFourSquareClientID	@"LLMZC1KVOLYD5J0YW3EXUH3K2S2HO1RUWUVYFSSS1BZQUOWF"
+#define kFourSquareClientSecret	@"CMGGREQOWGGC2QCQT4RV3MJVI0LXSOZTURZQNCY1OHGSCP5U"
 
 @interface PlaceListViewController : UITableViewController
 {    
@@ -22,6 +22,8 @@
 //    Boolean searching;
     NSMutableArray *data4SearchingTableView;
     NSInteger funtionFSQ;
+    NSInteger venuesCategoriesMark;
+    NSMutableDictionary *CategoriesDic;
 
 }
 @property (nonatomic) NSInteger function;

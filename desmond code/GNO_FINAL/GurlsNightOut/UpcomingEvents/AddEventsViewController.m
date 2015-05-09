@@ -1315,7 +1315,7 @@
 
 
 
-
+/*
 -(void) pickerDoneClick
 {       
     if (actionSheetFunction==0) {
@@ -1334,7 +1334,7 @@
 -(void) pickerCancelClick
 {
     [actionSheetDate dismissWithClickedButtonIndex:0 animated:YES];
-}
+}*/
 
 #pragma mark - textField delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
