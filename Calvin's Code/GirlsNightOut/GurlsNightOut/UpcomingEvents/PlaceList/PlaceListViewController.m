@@ -25,7 +25,7 @@
     }
     return self;
 }
-
+/*
 -(void)GetAllVenuesCategories{
     //NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=20130815&ll=%.6f,%.6f",kFourSquareClientID,kFourSquareClientSecret,currentLocation.location.coordinate.latitude,currentLocation.location.coordinate.longitude];
     NSString *urlStr=[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/categories?client_id=%@&client_secret=%@&v=20130815",kFourSquareClientID,kFourSquareClientSecret];
@@ -47,7 +47,7 @@
         
     }
 
-}
+}*/
 
 - (void)viewDidLoad
 {
