@@ -165,7 +165,9 @@
         case 0: {
             NSLog(@"show");
             if (isActivity) {
-                [self dismissModalViewControllerAnimated:YES];
+                //[self dismissModalViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:NO
+                                                       completion:nil];
             }
             else
             {

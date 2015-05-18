@@ -716,8 +716,10 @@ NSString *selectDateText;
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[[[tempFriendsArrayTableView objectAtIndex:[indexPath row]] objectForKey:@"userID"]objectForKey:@"photosDBID"]];
+                    if(img!= NULL){
                     [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[[[tempFriendsArrayTableView objectAtIndex:[indexPath row]] objectForKey:@"userID"]objectForKey:@"photosDBID"]]];
-                    cell.ivIcon.image=img;
+                        cell.ivIcon.image=img;
+                    }
                 }
                 
             }
@@ -761,8 +763,10 @@ NSString *selectDateText;
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[[[friendsArray objectAtIndex:[indexPath row]] objectForKey:@"userID"]objectForKey:@"photosDBID"]];
+                    if(img != NULL){
                     [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[[[friendsArray objectAtIndex:[indexPath row]] objectForKey:@"userID"]objectForKey:@"photosDBID"]]];
-                    cell.ivIcon.image=img;
+                        cell.ivIcon.image=img;
+                    }
                 }
                 
             }

@@ -484,8 +484,10 @@
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[[abc objectAtIndex:0] objectForKey:@"photosDBID"]];
+                    if(img!=NULL){
                     [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[[abc objectAtIndex:0] objectForKey:@"photosDBID"]]];
-                    cell.ivIcon.image=img;
+                        cell.ivIcon.image=img;
+                    }
                 }
                 
             }
@@ -668,8 +670,10 @@
                     }
                     else {
                         UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[dictionary objectForKey:@"iconPhotoDBID"]];
+                        if(img!=NULL){
                         [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[dictionary objectForKey:@"iconPhotoDBID"]]];
-                        cell.ivIcon.image=img;
+                            cell.ivIcon.image=img;
+                        }
                     }
                     
                 }
@@ -967,8 +971,10 @@
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[dictionary objectForKey:@"iconPhotoDBID"]];
+                    if(img!= NULL){
                     [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[dictionary objectForKey:@"iconPhotoDBID"]]];
-                    cell.ivIcon.image=img;
+                        cell.ivIcon.image=img;
+                    }
                 }
                 
             }
