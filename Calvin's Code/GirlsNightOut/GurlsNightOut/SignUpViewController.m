@@ -61,7 +61,7 @@
     [tfConfirmPW resignFirstResponder];
     [tfPhoneNumber resignFirstResponder];
     
-    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
+    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height);
 }
 #pragma mark - textField delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

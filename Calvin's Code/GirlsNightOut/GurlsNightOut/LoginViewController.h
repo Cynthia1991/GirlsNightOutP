@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 
+- (IBAction)TextTouchDownAction:(id)sender;
 
 - (IBAction)LoginAction:(id)sender;
 - (IBAction)textfieldReturn:(id)sender;

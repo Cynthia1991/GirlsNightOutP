@@ -32,9 +32,10 @@
 
     appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
+    /*self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
     self.myScollView.contentSize=CGSizeMake(320, [[UIScreen mainScreen] bounds].size.height-20);
     [self.contentView setFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)];
+    */
 
 }
 
@@ -74,6 +75,11 @@
 
 
 #pragma mark - button action
+- (IBAction)TextTouchDownAction:(id)sender {
+    // 发送resignFirstResponder.
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 - (IBAction)LoginAction:(id)sender {    
     NSString *userEmail=[NSString stringWithFormat:@"%@",tfUserID.text];
     NSString *userPassword=[NSString stringWithFormat:@"%@",tfPassword.text];
@@ -89,7 +95,7 @@
 	[tfUserID resignFirstResponder];
 	[tfPassword resignFirstResponder];
     
-    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
+    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height);
 }
 
 - (IBAction)backButtonAction:(id)sender {
