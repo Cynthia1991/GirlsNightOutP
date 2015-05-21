@@ -32,10 +32,10 @@
 
     appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     
-    /*self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
+    self.myScollView.frame=CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20);
     self.myScollView.contentSize=CGSizeMake(320, [[UIScreen mainScreen] bounds].size.height-20);
     [self.contentView setFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)];
-    */
+    
 
 }
 
