@@ -44,7 +44,7 @@
 {
     [super viewDidLoad];
     [myPageControl setCurrentPage:0];
-
+    [animationImg setAlpha:0.0f];
 	// Do any additional setup after loading the view.
     appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     appDelegate.addDrinkManager.enteredDrinkList=nil;
@@ -185,7 +185,7 @@
     }    
 }
 - (IBAction)touchMenuBackgroudViewAction:(id)sender {
-    //[self hideRoundMenu:0];
+    [self hideRoundMenu:0];
     NSLog(@"menu background view!!!");
 }
 
@@ -205,7 +205,7 @@
 
     
     transformed= [CALayer layer];
-    transformed.frame = CGRectMake(0, 0, 320, 460);
+    transformed.frame = CGRectMake(0, 0, 320, 600);
 
     imageLayer= [animationImg layer];
 
@@ -222,7 +222,12 @@
     [self.view bringSubviewToFront:addPhotoView];
     [self.view bringSubviewToFront:iAmHomeView];
     [self.view bringSubviewToFront:homeButtonView];
-    
+
+    //CGRect ntViewFrame2=[quickDialView frame];
+    //ntViewFrame2.origin.x=82;
+    //ntViewFrame2.origin.y=100;
+    //quickDialView.frame = ntViewFrame2;
+//[self.view bringSubviewToFront:quickDialView];
     ///////////////////////////////////////////////
     [UIView beginAnimations:@"describeView" context:nil];
     [UIView setAnimationDuration:0.3];
@@ -231,6 +236,7 @@
     ntViewFrame1.origin.y=[[UIScreen mainScreen] bounds].size.height-360;
     
     popUpView.frame=ntViewFrame1;
+    NSLog(@"popUpView1: %@",popUpView);
     
     [UIView commitAnimations];
     ///////////////////////////////////////////////
@@ -268,12 +274,19 @@
 
     
     ///////////////////////////////////////////////
-    [self annByx:280 View:quickDialView Time:0.9f];
-    [self annByx:140 View:addFriendsView Time:0.2f];
-    /*[self annByx:280 View:iAmHomeView Time:0.9f];
+    NSLog(@"quickDialView1: %@",quickDialView);
+    [self annByx:280 View:quickDialView Time:1.0f];
+    [self annByx:280 View:quickDialView Time:1.0f];
+    NSLog(@"quickDialView2: %@",quickDialView);
+    [self annByx:140 View:addFriendsView Time:0.6f];
+    [self annByx:280 View:iAmHomeView Time:0.8f];
+     //[self.view bringSubviewToFront:quickDialView];
     [self annByx:120 View:dismissView Time:0.2f];
     [self annByx:290 View:addTextView Time:0.7f];
-    [self annByx:150 View:addPhotoView Time:0.3f];*/
+    [self annByx:150 View:addPhotoView Time:0.3f];
+    //[transformed addSublayer:<#(CALayer *)#>:imageLayer];
+    //[self.view addSubview:quickDialView];
+    //iAmHomeView.layer.position = CGPointMake(iAmHomeView.center.x+280, iAmHomeView.center.y);
     menuButtonFunction=1;
 }
 - (void)hideRoundMenu:(NSInteger) function 
@@ -399,6 +412,9 @@
 }
 - (void) annByx:(NSInteger) x View:(UIView*) view Time:(float) time
 {
+    
+    NSLog(@"view........: %@",view);
+
     CAKeyframeAnimation *keyAn = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [keyAn setDuration:time];
     NSArray *array = [[NSArray alloc] initWithObjects:
@@ -421,6 +437,7 @@
     [keyAn setKeyTimes:times];
     view.layer.position = CGPointMake(view.center.x+x, view.center.y);
     [view.layer addAnimation:keyAn forKey:@"TextAnim"];
+    NSLog(@"view........2222222: %@",view);
 }
 
 #pragma mark - page control function

@@ -2514,6 +2514,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="i0d-cU-Ps2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" id="38K-8Z-rQd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -2780,7 +2781,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHn-Z1-B7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-916"/>
+            <point key="canvasLocation" x="1718" y="-1002"/>
         </scene>
         <!--Drink Cat View Controller-->
         <scene sceneID="NEZ-bo-hFV">

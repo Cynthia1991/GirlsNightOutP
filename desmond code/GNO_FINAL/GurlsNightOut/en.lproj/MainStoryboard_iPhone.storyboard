@@ -2799,7 +2799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHn-Z1-B7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1737" y="-452"/>
+            <point key="canvasLocation" x="1644" y="-452"/>
         </scene>
         <!--Drink Cat View Controller-->
         <scene sceneID="NEZ-bo-hFV">

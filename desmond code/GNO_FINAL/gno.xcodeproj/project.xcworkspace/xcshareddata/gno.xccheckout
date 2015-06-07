@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>D49B725D-3EB8-4536-882B-37C161C483C4</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>gno</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>691B542D47A6109DA26B18548453F9673A6AFDFD</key>
 		<string>https://github.com/Cynthia1991/GirlsNightOutP.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>desmond code/GNO_FINAL/gno.xcodeproj/project.xcworkspace</string>
+	<string>desmond code/GNO_FINAL/gno.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>691B542D47A6109DA26B18548453F9673A6AFDFD</key>
