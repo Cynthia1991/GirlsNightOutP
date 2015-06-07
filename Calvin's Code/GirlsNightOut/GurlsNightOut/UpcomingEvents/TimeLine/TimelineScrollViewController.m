@@ -185,7 +185,8 @@
     }    
 }
 - (IBAction)touchMenuBackgroudViewAction:(id)sender {
-    [self hideRoundMenu:0];
+    //[self hideRoundMenu:0];
+    NSLog(@"menu background view!!!");
 }
 
 #pragma mark - home button function and annomition
@@ -194,6 +195,7 @@
     [menuBackgroundView setUserInteractionEnabled:NO];
     [homeButtonView setUserInteractionEnabled:NO];
     
+    //set scrollView
     UIGraphicsBeginImageContext(self.view.bounds.size);
     [self.myScrollViewRootView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -261,20 +263,17 @@
                                               [homeButtonView setUserInteractionEnabled:YES];
                                               [menuButton setEnabled:YES];
                                           }];
-
-                                              
-
                      }];
     
 
     
     ///////////////////////////////////////////////
     [self annByx:280 View:quickDialView Time:0.9f];
-    [self annByx:140 View:addFriendsView Time:0.8f];
-    [self annByx:280 View:iAmHomeView Time:0.6f];
-    [self annByx:120 View:dismissView Time:0.7f];
-    [self annByx:290 View:addTextView Time:0.6f];
-    [self annByx:150 View:addPhotoView Time:0.5f];
+    [self annByx:140 View:addFriendsView Time:0.2f];
+    /*[self annByx:280 View:iAmHomeView Time:0.9f];
+    [self annByx:120 View:dismissView Time:0.2f];
+    [self annByx:290 View:addTextView Time:0.7f];
+    [self annByx:150 View:addPhotoView Time:0.3f];*/
     menuButtonFunction=1;
 }
 - (void)hideRoundMenu:(NSInteger) function 

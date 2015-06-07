@@ -230,8 +230,10 @@
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:[[[[appDelegate friendsManager] friendsList] objectAtIndex:[indexPath row]] objectForKey:@"photosDBID"]];
+                    if(img!= NULL){
                     [iconDic setObject:img forKey:[NSString stringWithFormat:@"id%@",[[[[appDelegate friendsManager] friendsList] objectAtIndex:[indexPath row]] objectForKey:@"photosDBID"]]];
-                    cell.ivIcon.image=img;
+                        cell.ivIcon.image=img;
+                    }
                 }
                 
             }

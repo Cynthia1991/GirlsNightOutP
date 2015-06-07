@@ -175,8 +175,10 @@
                 }
                 else {
                     UIImage *img=[[appDelegate photoManager] getPhotoByPhotoDBID:eventIconDBID];
+                    if(img != NULL){
                     [eventImageDic setObject:img forKey:[NSString stringWithFormat:@"id%@",eventIconDBID]];
                     cell.ivEventPhoto.image=img;
+                    }
                 }
                 
             }
