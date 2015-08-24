@@ -2144,7 +2144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bV-8f-qIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2998" y="-1947"/>
+            <point key="canvasLocation" x="3072" y="-1989"/>
         </scene>
         <!--Comment Details View Controller-->
         <scene sceneID="ggS-Bb-qax">
@@ -2205,7 +2205,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbS-wU-W2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3459" y="-1785.6500000000001"/>
+            <point key="canvasLocation" x="3521" y="-1966"/>
         </scene>
         <!--Like Details View Controller-->
         <scene sceneID="qfh-E2-ZFD">
@@ -3701,7 +3701,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHn-Z1-B7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-1083.9333333333334"/>
+            <point key="canvasLocation" x="1719" y="-1088"/>
         </scene>
         <!--Drink Cat View Controller-->
         <scene sceneID="NEZ-bo-hFV">
@@ -4017,7 +4017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUn-Md-ckl" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3070" y="-2885"/>
+            <point key="canvasLocation" x="2966" y="-2891"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4ch-hZ-c1u">
@@ -5215,6 +5215,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="l8R-v5-kAB"/>
-        <segue reference="gzm-lt-k6g"/>
+        <segue reference="LdQ-GR-pxE"/>
     </inferredMetricsTieBreakers>
 </document>
